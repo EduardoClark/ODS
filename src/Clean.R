@@ -420,6 +420,11 @@ remove(Keys)
 write.csv(EstatalMeta,"data-out/rangostemporales.csv",row.names = FALSE)
 remove(EstatalMeta)
 
+#Desagregacion Geografica
+DesGeo <- unique(Estatal[,c(1,7)])
+write.csv(DesGeo,"data-out/desagregaciongeografica.csv",row.names = FALSE)
+remove(DesGeo)
+
 #MetaData General 
 ODS <- ODS[,c(12,1:3,7:11)]
 write.csv(ODS,"data-out/metadata.csv",row.names = FALSE)
