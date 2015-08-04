@@ -427,6 +427,9 @@ remove(DesGeo)
 
 #MetaData General 
 ODS <- ODS[,c(12,1:3,7:11)]
+names(ODS) <- gsub("\\.","_",names(ODS))
+names(ODS)[6] <- "Desagregacion"
+names(ODS)[9] <- "Información_externa_BD"
 write.csv(ODS,"data-out/metadata.csv",row.names = FALSE)
 remove(ODS,Estatal)
 
