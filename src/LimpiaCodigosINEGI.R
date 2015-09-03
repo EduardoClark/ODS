@@ -67,9 +67,11 @@ Estatal$cve <- gsub("Nuevo Le\xf3n","19",Estatal$cve, ignore.case = TRUE)
 Estatal$cve <- gsub("Quer\xe9taro","22",Estatal$cve, ignore.case = TRUE)
 Estatal$cve <- gsub("San Luis Potos\xed","24",Estatal$cve, ignore.case = TRUE)
 Estatal$cve <- gsub("Yucat\xe1n","31",Estatal$cve, ignore.case = TRUE)
+Estatal$cve <- gsub("30 Igancio de la Llave","30",Estatal$cve, ignore.case = TRUE)
 
 Estatal$cve <- as.numeric(Estatal$cve)
-Estatal$DesGeo <- ifelse(Estatal$cve==0,"N","E")
+Estatal$DesGeo <- ifelse(Estatal$cve==0,"N",
+                         ifelse(Estatal$cve>=1001,"M","E"))
 
 #Exporta la base de datos
 write.csv(Estatal,"data-out/datos.csv",row.names=FALSE)

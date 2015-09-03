@@ -10,5 +10,5 @@ source("src/KeyGD.R")
 source("src/loadIndicadorSheet.R")
 source("src/Clean.R")
 source("src/LimpiaCodigosINEGI.R")
-# source("src/DownloadMunicipalities.R")#Adds an extra indicador to simulate a municipal level indicator
+# source("src/DownloadMunicipalities.R")#Adds an extra indicador to simulate a municipal level indicator before we had any
 source("src/ExportaRecursosExtra.R")
