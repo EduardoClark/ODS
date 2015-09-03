@@ -7,8 +7,8 @@
 #Exporta los recursos adicionales
 
 #Write subgroup descriptions
-Keys <- unique(rbind(KeyI127,KeyI131,KeyI132,KeyI133,KeyI50,KeyI88,KeyI90))
-remove(KeyI127,KeyI131,KeyI132,KeyI133,KeyI50,KeyI88,KeyI90)
+Keys <- unique(rbind_all(lapply(X = ls(pattern="KeyI"),FUN = get)))
+remove(list=ls(pattern="KeyI"))
 Keys$id3 <- gsub("X..","",Keys$id3)
 write.csv(Keys,"data-out/codigosgrupos.csv",row.names = FALSE)
 remove(Keys)
@@ -29,3 +29,6 @@ names(ODS)[6] <- "Desagregacion"
 names(ODS)[9] <- "Información_externa_BD"
 write.csv(ODS,"data-out/metadata.csv",row.names = FALSE)
 remove(ODS,Estatal)
+
+#Clear
+remove(list=ls())
