@@ -689,7 +689,7 @@ TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors=FALSE)
 TMP$id <- ODS$Clave[i]
 TMP$m <- 0
 TMP$id2 <- "a"
-TMP <- TMP[,c(5,2,1,4,6,7)]
+TMP <- TMP[,c(5,1,3,4,6,7)]
 names(TMP) <- c("id","cve","t","valor","m","id2")
 TMP$cve <- gsub('([[:upper:]])', ' \\1', TMP$cve)
 TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
