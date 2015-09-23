@@ -30,5 +30,10 @@ names(ODS)[9] <- "Información_externa_BD"
 write.csv(ODS,"data-out/metadata.csv",row.names = FALSE)
 remove(ODS,Estatal)
 
+#MetaData Espeficia
+
+
+
+
 #Clear
 remove(list=ls())

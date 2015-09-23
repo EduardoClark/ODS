@@ -72,6 +72,8 @@ Estatal$cve <- gsub("30 Igancio de la Llave","30",Estatal$cve, ignore.case = TRU
 Estatal$cve <- as.numeric(Estatal$cve)
 Estatal$DesGeo <- ifelse(Estatal$cve==0,"N",
                          ifelse(Estatal$cve>=1001,"M","E"))
+Estatal$t <- as.numeric(Estatal$t)
+Estatal$valor <- round(as.numeric(Estatal$valor),digits = 2)
 
 #Exporta la base de datos
 write.csv(Estatal,"data-out/datos.csv",row.names=FALSE)
