@@ -136,7 +136,7 @@ Estatal <- rbind(Estatal,TMP)
 EstatalMeta <- rbind(EstatalMeta,TMP2)
 
 ##Clean I45
-i=12
+i=which(ODS$Clave=="i45")
 TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
 TMP$id <- ODS$Clave[i]
 TMP$m <- 0
@@ -1652,16 +1652,14 @@ unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
 TMP <- read.csv("tmp/14_mujeres_puestos_directivos.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
 TMP$id <- ODS$Clave[i]
 TMP$m <- 0
-TMP <- TMP %>% gather(id3,valor, Mujeres.en.puestos.gerenciales:Porcentaje.de.mujeres.en.puestos.directivos.de.la.administración.pública)
-TMP$id3 <- gsub("\\."," ",TMP$id3)
-TMP <- left_join(TMP,data.frame(id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))]))
-KeyI154 <- data.frame(id=unique(TMP$id),id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))])
+TMP$id2 <- "a"
 TMP$cve <- 0
 TMP$m <- gsub("Tercer trimestre",9,TMP$Trimestre)
 TMP$m <- gsub("Primer trimestre",3,TMP$m)
 TMP$m <- gsub("Segundo trimestre",6,TMP$m)
 TMP$m <- gsub("Cuarto trimestre",12,TMP$m)
-TMP <- TMP[,c(4,9,1,7,5,8)]
+TMP <- TMP[,c(9,12,1,5,2,11)]
+TMP <- TMP[is.na(TMP$Porcentaje.de.mujeres.en.puestos.gerenciales.en.el.sector.público)==FALSE,]
 names(TMP) <- c("id","cve","t","valor","m","id2")
 TMP <- TMP[is.na(TMP$t)==FALSE,]
 TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
@@ -1707,6 +1705,400 @@ names(TMP2) <- c("id","ranget","rangetm")
 Estatal <- rbind(Estatal,TMP)
 EstatalMeta <- rbind(EstatalMeta,TMP2)
 unlink("tmp/",recursive = TRUE)
+
+#Clean I151
+dir.create("tmp")
+i=which(ODS$Clave=="i151")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/10_promedio_horas_trabajo_domestico.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$cve <- 0
+TMP$Nacional <- gsub("Estados Unidos Mexicanos","Total",TMP$Nacional)
+TMP$id3 <- paste(TMP$Nacional,TMP$Clasificación,sep=" - ")
+TMP <- left_join(TMP,data.frame(id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))]))
+KeyI151 <- data.frame(id=unique(TMP$id),id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))])
+TMP <- TMP[,c(9,11,1,7,10,13)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean I150
+dir.create("tmp")
+i=which(ODS$Clave=="i150")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/9_promedio_horas_trabajo_cuidados.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$cve <- 0
+TMP$Nacional <- gsub("Estados Unidos Mexicanos","Total",TMP$Nacional)
+TMP$id3 <- paste(TMP$Nacional,TMP$Clasificación,sep=" - ")
+TMP <- left_join(TMP,data.frame(id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))]))
+KeyI150 <- data.frame(id=unique(TMP$id),id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))])
+TMP <- TMP[,c(10,12,1,7,11,14)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean I149
+dir.create("tmp")
+i=which(ODS$Clave=="i149")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/8_2_mujeres_15a19_lengua_indigena.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$cve <- 0
+TMP$Entidad <- gsub("Estados Unidos Mexicanos","Total",TMP$Entidad)
+TMP$id2 <- "a"
+TMP <- TMP[,c(7,9,1,6,8,10)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP <- TMP[is.na(TMP$t)==FALSE,]
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean I148
+dir.create("tmp")
+i=which(ODS$Clave=="i148")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/8_1_mujeres_15a19_con_hijos.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$id2 <- "a"
+TMP <- TMP[,c(7,2,1,6,8,9)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP <- TMP[is.na(TMP$t)==FALSE,]
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean I147
+dir.create("tmp")
+i=which(ODS$Clave=="i147")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/7_2_matrimonios_menores_15a17.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$id3 <- TMP$Clasificación
+TMP <- left_join(TMP,data.frame(id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))]))
+KeyI147 <- data.frame(id=unique(TMP$id),id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))])
+TMP <- TMP[,c(9,2,1,7,10,12)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean I146
+dir.create("tmp")
+i=which(ODS$Clave=="i146")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/7_1_matrimonios_menores_12a14.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$id3 <- TMP$Clasificación
+TMP <- left_join(TMP,data.frame(id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))]))
+KeyI146 <- data.frame(id=unique(TMP$id),id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))])
+TMP <- TMP[,c(10,2,1,7,11,13)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean I145
+dir.create("tmp")
+i=which(ODS$Clave=="i145")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/6_mujeres20a24_casadas.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$id2 <- "a"
+TMP <- TMP[,c(8,2,1,6,9,10)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP <- TMP[is.na(TMP$t)==FALSE,]
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean I144
+dir.create("tmp")
+i=which(ODS$Clave=="i144")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/5_3_violencia_sit_conyugal_agresor_distinto.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$id3 <- paste(TMP$Situación.conyugal, " - ",TMP$Grupos.de.edad," años",sep="")
+TMP <- left_join(TMP,data.frame(id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))]))
+KeyI144 <- data.frame(id=unique(TMP$id),id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))])
+TMP <- TMP[,c(10,2,1,8,11,13)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP <- TMP[is.na(TMP$t)==FALSE,]
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean I143
+dir.create("tmp")
+i=which(ODS$Clave=="i143")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/5_2_violencia_mujeres_indigena_agresor distinto.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$id2 <- "a"
+TMP <- TMP[,c(10,2,1,7,11,12)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP <- TMP[is.na(TMP$t)==FALSE,]
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean I142
+dir.create("tmp")
+i=which(ODS$Clave=="i142")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/5_1_violencia_mujeres_urb_rural_agresor_distinto.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$id3 <- paste(TMP$Tamaño.de.localidad, " - ",TMP$Grupos.de.edad," años",sep="")
+TMP <- left_join(TMP,data.frame(id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))]))
+KeyI142 <- data.frame(id=unique(TMP$id),id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))])
+TMP <- TMP[,c(10,2,1,8,11,13)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean I141
+dir.create("tmp")
+i=which(ODS$Clave=="i141")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/4_3_violencia_sit_conyugal_pareja_actual.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$id3 <- paste(TMP$Tamaño.de.localidad, " - ",TMP$Grupos.de.edad," años",sep="")
+TMP <- left_join(TMP,data.frame(id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))]))
+KeyI141 <- data.frame(id=unique(TMP$id),id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))])
+TMP <- TMP[,c(10,2,1,8,11,13)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP <- TMP[is.na(TMP$t)==FALSE,]
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean I140
+dir.create("tmp")
+i=which(ODS$Clave=="i140")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/4_2_violencia_mujeres_indigena_pareja_actual.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$id3 <- paste(TMP$Grupos.de.edad," años",sep="")
+TMP <- TMP[is.na(TMP$Clave.de.la.entidad)==FALSE,]
+TMP <- left_join(TMP,data.frame(id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))]))
+KeyI140 <- data.frame(id=unique(TMP$id),id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))])
+TMP <- TMP[,c(9,2,1,7,10,12)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP <- TMP[is.na(TMP$t)==FALSE,]
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean I139
+dir.create("tmp")
+i=which(ODS$Clave=="i139")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/4_1_violencia_mujeres_urb_rural_pareja_actual.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$id3 <- paste(TMP$Tamaño.de.localidad, " - ",TMP$Grupos.de.edad," años",sep="")
+TMP <- left_join(TMP,data.frame(id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))]))
+KeyI139 <- data.frame(id=unique(TMP$id),id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))])
+TMP <- TMP[,c(10,2,1,8,11,13)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP <- TMP[is.na(TMP$t)==FALSE,]
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean I138
+dir.create("tmp")
+i=which(ODS$Clave=="i138")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/3_razon_paridad_educativa.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)[,1:13]
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP <- TMP %>% gather(id3, valor, Razón.de.paridad.educativa.entre.hombres.y.mujeres.de.3.a.25.años.de.edad.que.asisten.a.la.escuela,Razón.de.paridad.educativa.entre.hombres.y.mujeres.de.3.a.25.años.de.edad.en.localidades.urbanas.que.asisten.a.la.escuela,Razón.de.paridad.educativa.entre.hombres.y.mujeres.de.3.a.25.años.de.edad.en.localidades.rurales.que.asisten.a.la.escuela..b.)
+TMP$id3 <- gsub("Razón.de.paridad.educativa.entre.hombres.y.mujeres.de.3.a.25.años.de.edad.que.asisten.a.la.escuela","Total",TMP$id3)
+TMP$id3 <- gsub("Razón.de.paridad.educativa.entre.hombres.y.mujeres.de.3.a.25.años.de.edad.en.localidades.urbanas.que.asisten.a.la.escuela","Urbano",TMP$id3)
+TMP$id3 <- gsub("Razón.de.paridad.educativa.entre.hombres.y.mujeres.de.3.a.25.años.de.edad.en.localidades.rurales.que.asisten.a.la.escuela..b.","Rural",TMP$id3)
+TMP$id3 <- paste(TMP$Quintil.de.ingreso..a.,TMP$id3,sep=" - ")
+TMP <- left_join(TMP,data.frame(id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))]))
+KeyI138 <- data.frame(id=unique(TMP$id),id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))])
+TMP <- TMP[,c(11,2,1,14,12,15)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP <- TMP[is.na(TMP$t)==FALSE,]
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean I136
+dir.create("tmp")
+i=which(ODS$Clave=="i136")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/1_satisfaccion_con_la_vida.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP <- TMP %>% gather(id3, valor, Porcentaje.de.población.con.insatisfacción.con.la.vida:Porcentaje.de.población.satisfecha.con.la.vida)
+TMP$id3 <- gsub("\\."," ",TMP$id3)
+TMP$id3 <- gsub("Porcentaje de población "," ",TMP$id3)
+TMP$id3 <- paste(TMP$Clasificación,TMP$Quintil.de.ingreso..a.,TMP$id3,sep=" - ")
+TMP <- left_join(TMP,data.frame(id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))]))
+KeyI136 <- data.frame(id=unique(TMP$id),id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))])
+TMP$cve <- 0
+TMP$t <- 2014
+TMP <- TMP[,c(2,7,8,5,3,6)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP <- TMP[is.na(TMP$t)==FALSE,]
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean I137
+dir.create("tmp")
+i=which(ODS$Clave=="i137")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/2_usuarios_internet.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$id2 <- "a"
+TMP <- TMP[,c(9,2,1,6,10,11)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP <- TMP[is.na(TMP$t)==FALSE,]
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean I137
+dir.create("tmp")
+i=which(ODS$Clave=="i137")
+download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+TMP <- read.csv("tmp/2_usuarios_internet.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$id2 <- "a"
+TMP <- TMP[,c(9,2,1,6,10,11)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP <- TMP[is.na(TMP$t)==FALSE,]
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+#Clean i110
+i=which(ODS$Clave=="i110")
+TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$id2 <- "a"
+TMP$AÑO.AGRÍCOLA <- substr(TMP$AÑO.AGRÍCOLA,1,4)
+TMP$cve <- 0
+TMP <- TMP[,c(4,7,1,2,5,6)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+
+#Clean i109
+i=which(ODS$Clave=="i109")
+TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$id2 <- "a"
+TMP$cve <- 0
+TMP <- TMP[,c(7,10,3,6,8,9)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+
+#Clean i172
+i=which(ODS$Clave=="i172")
+TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$id2 <- "a"
+TMP <- TMP[,c(4,1,3,2,5,6)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
+
+#Clean i175
+i=which(ODS$Clave=="i175")
+TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
+TMP$id <- ODS$Clave[i]
+TMP$m <- 0
+TMP$id2 <- "a"
+TMP <- TMP[,c(4,1,3,2,5,6)]
+names(TMP) <- c("id","cve","t","valor","m","id2")
+TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+names(TMP2) <- c("id","ranget","rangetm")
+Estatal <- rbind(Estatal,TMP)
+EstatalMeta <- rbind(EstatalMeta,TMP2)
 
 #Clean DBBase
 remove(TMP,TMP2,i)
