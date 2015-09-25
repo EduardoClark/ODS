@@ -35,3 +35,6 @@ remove(ODS,Estatal)
 
 #Clear
 remove(list=ls())
+
+RRT1 <- RRT %>% spread(DesGeo,id)
+
