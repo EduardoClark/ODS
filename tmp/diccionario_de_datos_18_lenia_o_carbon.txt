@@ -1,4 +1,0 @@
-﻿Diccionario de datos
-Nota: Los valores indicados con ceros, significa información no disponible.
-Fuente: Estimaciones de CONEVAL con información de INEGI. MCS-ENIGH 2008, 2010 y 2012.
-
