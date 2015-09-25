@@ -75,6 +75,13 @@ Estatal$DesGeo <- ifelse(Estatal$cve==0,"N",
 Estatal$t <- as.numeric(Estatal$t)
 Estatal$valor <- round(as.numeric(Estatal$valor),digits = 2)
 
+#Quita NA
+Estatal <- Estatal[is.na(Estatal$cve)==FALSE,]
+Estatal <- Estatal[is.na(Estatal$t)==FALSE,]
+Estatal <- Estatal[is.na(Estatal$m)==FALSE,]
+Estatal <- Estatal[is.na(Estatal$id2)==FALSE,]
+Estatal <- Estatal[is.na(Estatal$DesGeo)==FALSE,]
+
 #Exporta la base de datos
 write.csv(Estatal,"data-out/datos.csv",row.names=FALSE)
 
