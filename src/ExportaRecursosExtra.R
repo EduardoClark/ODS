@@ -14,6 +14,7 @@ write.csv(Keys,"data-out/codigosgrupos.csv",row.names = FALSE)
 remove(Keys)
 
 #Write date ranges
+EstatalMeta$ranget <- as.numeric(EstatalMeta$ranget)
 write.csv(EstatalMeta,"data-out/rangostemporales.csv",row.names = FALSE)
 remove(EstatalMeta)
 
@@ -22,11 +23,11 @@ DesGeo <- unique(Estatal[,c(1,7)])
 write.csv(DesGeo,"data-out/desagregaciongeografica.csv",row.names = FALSE)
 remove(DesGeo)
 
+
 #MetaData General 
-ODS <- ODS[,c(12,1:3,7:11,21)]
 names(ODS) <- gsub("\\.","_",names(ODS))
-names(ODS)[6] <- "Desagregacion"
-names(ODS)[9] <- "Información_externa_BD"
+names(ODS)[1] <- "Nombre_del_objetivo"
+names(ODS$X_1)<-NULL
 write.csv(ODS,"data-out/metadata.csv",row.names = FALSE)
 remove(ODS,Estatal)
 
