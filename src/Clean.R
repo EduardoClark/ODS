@@ -13,6 +13,8 @@ TMP$id <- ODS$Clave[i]
 TMP <- TMP[,c(5,1,3,4)]
 names(TMP) <- c("id","cve","t","valor")
 TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP$t))
+##OK
+
 
 ##DB
 Estatal <- TMP
@@ -27,6 +29,7 @@ names(TMP) <- c("id","cve","t","valor")
 TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP$t))
 Estatal <- rbind(Estatal,TMP)
 EstatalMeta <- rbind(EstatalMeta,TMP2)
+##OK
 
 ##Clean I12
 i=which(ODS$Clave=="i12")
@@ -678,7 +681,7 @@ TMP$m <- 0
 TMP$id2 <- "a"
 TMP <- TMP[,c(6,2,1,3,7,8)]
 names(TMP) <- c("id","cve","t","valor","m","id2")
-TMP$cve <- gsub("Estados Unidos Mexicanos","NACIONAL",TMP$cve,ignore.case = TRUE)
+TMP$cve <- gsub("Estados Unidos Mexicanos","0",TMP$cve,ignore.case = TRUE)
 TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
 names(TMP2) <- c("id","ranget","rangetm")
 Estatal <- rbind(Estatal,TMP)
@@ -973,7 +976,6 @@ EstatalMeta <- rbind(EstatalMeta,TMP2)
 #B
 i=which(ODS$Clave=="i173")
 TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
-TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
 TMP$id ="i104"
 TMP$m <- 0
 TMP$id2 <- "a"
@@ -1231,135 +1233,135 @@ names(TMP2) <- c("id","ranget","rangetm")
 Estatal <- rbind(Estatal,TMP)
 EstatalMeta <- rbind(EstatalMeta,TMP2)
 
-#Clean I176
-i=which(ODS$Clave=="i176")
-TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
-TMP$id <- ODS$Clave[i]
-TMP$m <- 0
-TMP$id2 <- "a"
-TMP <- TMP[,c(5,1,3,2,4,6)]
-names(TMP) <- c("id","cve","t","valor","m","id2")
-TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
-names(TMP2) <- c("id","ranget","rangetm")
-Estatal <- rbind(Estatal,TMP)
-EstatalMeta <- rbind(EstatalMeta,TMP2)
-
-#Clean I175
-i=which(ODS$Clave=="i175")
-TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
-TMP$id <- ODS$Clave[i]
-TMP$m <- 0
-TMP$id2 <- "a"
-TMP <- TMP[,c(4,1,3,2,5,6)]
-names(TMP) <- c("id","cve","t","valor","m","id2")
-TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
-names(TMP2) <- c("id","ranget","rangetm")
-Estatal <- rbind(Estatal,TMP)
-EstatalMeta <- rbind(EstatalMeta,TMP2)
-
-#Clean I174
-i=which(ODS$Clave=="i174")
-TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
-TMP$id <- ODS$Clave[i]
-TMP$m <- 0
-TMP$id2 <- "a"
-TMP <- TMP[,c(4,1,3,2,5,6)]
-names(TMP) <- c("id","cve","t","valor","m","id2")
-TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
-names(TMP2) <- c("id","ranget","rangetm")
-Estatal <- rbind(Estatal,TMP)
-EstatalMeta <- rbind(EstatalMeta,TMP2)
-
-#Clean I173
-i=which(ODS$Clave=="i173")
-TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
-TMP$id <- ODS$Clave[i]
-TMP$m <- 0
-TMP$id2 <- "a"
-TMP <- TMP[,c(4,1,3,2,5,6)]
-names(TMP) <- c("id","cve","t","valor","m","id2")
-TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
-names(TMP2) <- c("id","ranget","rangetm")
-Estatal <- rbind(Estatal,TMP)
-EstatalMeta <- rbind(EstatalMeta,TMP2)
-
-#Clean I172
-i=which(ODS$Clave=="i172")
-TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
-TMP$id <- ODS$Clave[i]
-TMP$m <- 0
-TMP$id2 <- "a"
-TMP <- TMP[,c(4,1,3,2,5,6)]
-names(TMP) <- c("id","cve","t","valor","m","id2")
-TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
-names(TMP2) <- c("id","ranget","rangetm")
-Estatal <- rbind(Estatal,TMP)
-EstatalMeta <- rbind(EstatalMeta,TMP2)
-
-#Clean I171
-i=which(ODS$Clave=="i171")
-TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
-TMP$id <- ODS$Clave[i]
-TMP$m <- 0
-TMP$id2 <- "a"
-TMP <- TMP[,c(4,1,3,2,5,6)]
-names(TMP) <- c("id","cve","t","valor","m","id2")
-TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
-names(TMP2) <- c("id","ranget","rangetm")
-Estatal <- rbind(Estatal,TMP)
-EstatalMeta <- rbind(EstatalMeta,TMP2)
-
-#Clean I170
-i=which(ODS$Clave=="i170")
-TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
-TMP$id <- ODS$Clave[i]
-TMP$m <- 0
-TMP$id2 <- "a"
-TMP <- TMP[,c(4,1,3,2,5,6)]
-names(TMP) <- c("id","cve","t","valor","m","id2")
-TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
-names(TMP2) <- c("id","ranget","rangetm")
-Estatal <- rbind(Estatal,TMP)
-EstatalMeta <- rbind(EstatalMeta,TMP2)
-
-#Clean I169
-i=which(ODS$Clave=="i169")
-TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
-TMP$id <- ODS$Clave[i]
-TMP$m <- 0
-TMP$id2 <- "a"
-TMP <- TMP[,c(4,1,3,2,5,6)]
-names(TMP) <- c("id","cve","t","valor","m","id2")
-TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
-names(TMP2) <- c("id","ranget","rangetm")
-Estatal <- rbind(Estatal,TMP)
-EstatalMeta <- rbind(EstatalMeta,TMP2)
-
-#Clean I168
-i=which(ODS$Clave=="i168")
-TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
-TMP$id <- ODS$Clave[i]
-TMP$m <- 0
-TMP$id2 <- "a"
-TMP <- TMP[,c(4,1,3,2,5,6)]
-names(TMP) <- c("id","cve","t","valor","m","id2")
-TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
-names(TMP2) <- c("id","ranget","rangetm")
-Estatal <- rbind(Estatal,TMP)
-EstatalMeta <- rbind(EstatalMeta,TMP2)
-
-#Clean I168
-i=which(ODS$Clave=="i168")
-TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
-TMP$id <- ODS$Clave[i]
-TMP$m <- 0
-TMP$id2 <- "a"
-TMP <- TMP[,c(4,1,3,2,5,6)]
-names(TMP) <- c("id","cve","t","valor","m","id2")
-TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
-names(TMP2) <- c("id","ranget","rangetm")
-Estatal <- rbind(Estatal,TMP)
-EstatalMeta <- rbind(EstatalMeta,TMP2)
+# #Clean I176
+# i=which(ODS$Clave=="i176")
+# TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
+# TMP$id <- ODS$Clave[i]
+# TMP$m <- 0
+# TMP$id2 <- "a"
+# TMP <- TMP[,c(5,1,3,2,4,6)]
+# names(TMP) <- c("id","cve","t","valor","m","id2")
+# TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+# names(TMP2) <- c("id","ranget","rangetm")
+# Estatal <- rbind(Estatal,TMP)
+# EstatalMeta <- rbind(EstatalMeta,TMP2)
+# 
+# #Clean I175
+# i=which(ODS$Clave=="i175")
+# TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
+# TMP$id <- ODS$Clave[i]
+# TMP$m <- 0
+# TMP$id2 <- "a"
+# TMP <- TMP[,c(4,1,3,2,5,6)]
+# names(TMP) <- c("id","cve","t","valor","m","id2")
+# TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+# names(TMP2) <- c("id","ranget","rangetm")
+# Estatal <- rbind(Estatal,TMP)
+# EstatalMeta <- rbind(EstatalMeta,TMP2)
+# 
+# #Clean I174
+# i=which(ODS$Clave=="i174")
+# TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
+# TMP$id <- ODS$Clave[i]
+# TMP$m <- 0
+# TMP$id2 <- "a"
+# TMP <- TMP[,c(4,1,3,2,5,6)]
+# names(TMP) <- c("id","cve","t","valor","m","id2")
+# TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+# names(TMP2) <- c("id","ranget","rangetm")
+# Estatal <- rbind(Estatal,TMP)
+# EstatalMeta <- rbind(EstatalMeta,TMP2)
+# 
+# #Clean I173
+# i=which(ODS$Clave=="i173")
+# TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
+# TMP$id <- ODS$Clave[i]
+# TMP$m <- 0
+# TMP$id2 <- "a"
+# TMP <- TMP[,c(4,1,3,2,5,6)]
+# names(TMP) <- c("id","cve","t","valor","m","id2")
+# TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+# names(TMP2) <- c("id","ranget","rangetm")
+# Estatal <- rbind(Estatal,TMP)
+# EstatalMeta <- rbind(EstatalMeta,TMP2)
+# 
+# #Clean I172
+# i=which(ODS$Clave=="i172")
+# TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
+# TMP$id <- ODS$Clave[i]
+# TMP$m <- 0
+# TMP$id2 <- "a"
+# TMP <- TMP[,c(4,1,3,2,5,6)]
+# names(TMP) <- c("id","cve","t","valor","m","id2")
+# TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+# names(TMP2) <- c("id","ranget","rangetm")
+# Estatal <- rbind(Estatal,TMP)
+# EstatalMeta <- rbind(EstatalMeta,TMP2)
+# 
+# #Clean I171
+# i=which(ODS$Clave=="i171")
+# TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
+# TMP$id <- ODS$Clave[i]
+# TMP$m <- 0
+# TMP$id2 <- "a"
+# TMP <- TMP[,c(4,1,3,2,5,6)]
+# names(TMP) <- c("id","cve","t","valor","m","id2")
+# TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+# names(TMP2) <- c("id","ranget","rangetm")
+# Estatal <- rbind(Estatal,TMP)
+# EstatalMeta <- rbind(EstatalMeta,TMP2)
+# 
+# #Clean I170
+# i=which(ODS$Clave=="i170")
+# TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
+# TMP$id <- ODS$Clave[i]
+# TMP$m <- 0
+# TMP$id2 <- "a"
+# TMP <- TMP[,c(4,1,3,2,5,6)]
+# names(TMP) <- c("id","cve","t","valor","m","id2")
+# TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+# names(TMP2) <- c("id","ranget","rangetm")
+# Estatal <- rbind(Estatal,TMP)
+# EstatalMeta <- rbind(EstatalMeta,TMP2)
+# 
+# #Clean I169
+# i=which(ODS$Clave=="i169")
+# TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
+# TMP$id <- ODS$Clave[i]
+# TMP$m <- 0
+# TMP$id2 <- "a"
+# TMP <- TMP[,c(4,1,3,2,5,6)]
+# names(TMP) <- c("id","cve","t","valor","m","id2")
+# TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+# names(TMP2) <- c("id","ranget","rangetm")
+# Estatal <- rbind(Estatal,TMP)
+# EstatalMeta <- rbind(EstatalMeta,TMP2)
+# 
+# #Clean I168
+# i=which(ODS$Clave=="i168")
+# TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
+# TMP$id <- ODS$Clave[i]
+# TMP$m <- 0
+# TMP$id2 <- "a"
+# TMP <- TMP[,c(4,1,3,2,5,6)]
+# names(TMP) <- c("id","cve","t","valor","m","id2")
+# TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+# names(TMP2) <- c("id","ranget","rangetm")
+# Estatal <- rbind(Estatal,TMP)
+# EstatalMeta <- rbind(EstatalMeta,TMP2)
+# 
+# #Clean I168
+# i=which(ODS$Clave=="i168")
+# TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
+# TMP$id <- ODS$Clave[i]
+# TMP$m <- 0
+# TMP$id2 <- "a"
+# TMP <- TMP[,c(4,1,3,2,5,6)]
+# names(TMP) <- c("id","cve","t","valor","m","id2")
+# TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+# names(TMP2) <- c("id","ranget","rangetm")
+# Estatal <- rbind(Estatal,TMP)
+# EstatalMeta <- rbind(EstatalMeta,TMP2)
 
 
 #Clean I167
@@ -1547,13 +1549,14 @@ dir.create("tmp")
 i=which(ODS$Clave=="i158")
 download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
 unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
-TMP <- read.csv("tmp/18_Lenia_o_carbon.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+TMP <- read.csv("tmp/18_lenia_o_carbon.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
 TMP$id <- ODS$Clave[i]
 TMP$m <- 0
 TMP$id2 <- "a"
-TMP$cve <- paste(formatC(TMP$Clave.de.la.entidad,width = 2,flag = 0),formatC(TMP$Clave.del.municipio,width = 3,flag = 0),sep="")
+TMP$Clave.del..municipio <- ifelse(TMP$Clave.del..municipio==0,NA,TMP$Clave.del..municipio)
+TMP$cve <- paste(formatC(TMP$Clave.de.entidad,width = 2,flag = 0),formatC(TMP$Clave.del..municipio,width = 3,flag = 0),sep="")
 TMP$cve <- gsub(" NA","",TMP$cve)
-TMP <- TMP[,c(11,14,1,8,12,13)]
+TMP <- TMP[,c(7,10,1,6,8,9)]
 names(TMP) <- c("id","cve","t","valor","m","id2")
 TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
 names(TMP2) <- c("id","ranget","rangetm")
@@ -1659,7 +1662,7 @@ TMP$m <- gsub("Tercer trimestre",9,TMP$Trimestre)
 TMP$m <- gsub("Primer trimestre",3,TMP$m)
 TMP$m <- gsub("Segundo trimestre",6,TMP$m)
 TMP$m <- gsub("Cuarto trimestre",12,TMP$m)
-TMP <- TMP[,c(9,12,1,5,2,11)]
+TMP <- TMP[,c(9,12,1,5,10,11)]
 TMP <- TMP[is.na(TMP$Porcentaje.de.mujeres.en.puestos.gerenciales.en.el.sector.público)==FALSE,]
 names(TMP) <- c("id","cve","t","valor","m","id2")
 TMP <- TMP[is.na(TMP$t)==FALSE,]
@@ -1681,10 +1684,12 @@ TMP$id2 <- "a"
 TMP <- TMP[,c(8,2,1,6,9,10)]
 names(TMP) <- c("id","cve","t","valor","m","id2")
 TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+TMP <- TMP[is.na(TMP$t)==FALSE,]
 names(TMP2) <- c("id","ranget","rangetm")
 Estatal <- rbind(Estatal,TMP)
 EstatalMeta <- rbind(EstatalMeta,TMP2)
 unlink("tmp/",recursive = TRUE)
+
 
 #Clean I152
 dir.create("tmp")
@@ -2028,24 +2033,6 @@ Estatal <- rbind(Estatal,TMP)
 EstatalMeta <- rbind(EstatalMeta,TMP2)
 unlink("tmp/",recursive = TRUE)
 
-#Clean I137
-dir.create("tmp")
-i=which(ODS$Clave=="i137")
-download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
-unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
-TMP <- read.csv("tmp/2_usuarios_internet.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
-TMP$id <- ODS$Clave[i]
-TMP$m <- 0
-TMP$id2 <- "a"
-TMP <- TMP[,c(9,2,1,6,10,11)]
-names(TMP) <- c("id","cve","t","valor","m","id2")
-TMP <- TMP[is.na(TMP$t)==FALSE,]
-TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
-names(TMP2) <- c("id","ranget","rangetm")
-Estatal <- rbind(Estatal,TMP)
-EstatalMeta <- rbind(EstatalMeta,TMP2)
-unlink("tmp/",recursive = TRUE)
-
 #Clean i110
 i=which(ODS$Clave=="i110")
 TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
@@ -2075,31 +2062,31 @@ names(TMP2) <- c("id","ranget","rangetm")
 Estatal <- rbind(Estatal,TMP)
 EstatalMeta <- rbind(EstatalMeta,TMP2)
 
-#Clean i172
-i=which(ODS$Clave=="i172")
-TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
-TMP$id <- ODS$Clave[i]
-TMP$m <- 0
-TMP$id2 <- "a"
-TMP <- TMP[,c(4,1,3,2,5,6)]
-names(TMP) <- c("id","cve","t","valor","m","id2")
-TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
-names(TMP2) <- c("id","ranget","rangetm")
-Estatal <- rbind(Estatal,TMP)
-EstatalMeta <- rbind(EstatalMeta,TMP2)
+# #Clean i172
+# i=which(ODS$Clave=="i172")
+# TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
+# TMP$id <- ODS$Clave[i]
+# TMP$m <- 0
+# TMP$id2 <- "a"
+# TMP <- TMP[,c(4,1,3,2,5,6)]
+# names(TMP) <- c("id","cve","t","valor","m","id2")
+# TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+# names(TMP2) <- c("id","ranget","rangetm")
+# Estatal <- rbind(Estatal,TMP)
+# EstatalMeta <- rbind(EstatalMeta,TMP2)
 
-#Clean i175
-i=which(ODS$Clave=="i175")
-TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
-TMP$id <- ODS$Clave[i]
-TMP$m <- 0
-TMP$id2 <- "a"
-TMP <- TMP[,c(4,1,3,2,5,6)]
-names(TMP) <- c("id","cve","t","valor","m","id2")
-TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
-names(TMP2) <- c("id","ranget","rangetm")
-Estatal <- rbind(Estatal,TMP)
-EstatalMeta <- rbind(EstatalMeta,TMP2)
+# #Clean i175
+# i=which(ODS$Clave=="i175")
+# TMP <- read.csv(ODS$URL.indicador[i],stringsAsFactors = FALSE)
+# TMP$id <- ODS$Clave[i]
+# TMP$m <- 0
+# TMP$id2 <- "a"
+# TMP <- TMP[,c(4,1,3,2,5,6)]
+# names(TMP) <- c("id","cve","t","valor","m","id2")
+# TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+# names(TMP2) <- c("id","ranget","rangetm")
+# Estatal <- rbind(Estatal,TMP)
+# EstatalMeta <- rbind(EstatalMeta,TMP2)
 
 #Clean DBBase
 remove(TMP,TMP2,i)
