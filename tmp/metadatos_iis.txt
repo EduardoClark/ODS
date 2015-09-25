@@ -1,0 +1,38 @@
+Identifier: MEX-INEGI.IAI2-IIS-2015
+
+
+Title: Indicadores de Inclusión Social (Para la Agenda Post 2015)
+
+Description: Se refiere a indicadores con desagregación a nivel nacional, entidad federativa, municipio, tamaño de localidad y grupos poblacionales, los cuales permiten medir la inclusión social en México y están enfocados a la siguiente temática: 
+
+* Garantizar una vida sana y promover el bienestar para todos en todas las edades.
+* Garantizar una educación inclusiva, equitativa y de calidad y promover oportunidades de aprendizaje durante toda la vida para todos.
+* Lograr la igualdad entre los géneros y el empoderamiento de todas las mujeres y niñas.
+* Garantizar la disponibilidad de agua y su ordenación sostenible y el saneamiento para todos.
+* Garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos.
+* Promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos.
+* Lograr que las ciudades y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles.
+* Promover sociedades pacíficas e inclusivas para el desarrollo sostenible, facilitar el acceso a la justicia para todos y crear instituciones eficaces, responsables e inclusivas a todos los niveles.
+
+Modified: 2015-08-03
+
+Publisher: Instituto Nacional de Estadística y Geografía, INEGI
+
+Mbox: atencion@usuarios.inegi.org.mx
+
+License: Términos de Libre Uso de la Información del INEGI http://www.inegi.org.mx/terminos/terminos_info.aspx 
+
+DataDictionary: 
+
+Keyword: Satisfecho, molestia, género, mujeres, pareja, matrimonios, hijo, vivo, lengua, indígena, directivos, puestos, vivienda, saneamiento, servicios, pib, población, focos, localidades, solares, internet, insatisfacción, paridad, horas, remuneradas, domésticas, razón, activa, gasto, violencia, física, relación, agresor, menores, alcaldías, telefonía, celular, administración, agua, fuentes, abastecimiento, drenaje, acceso, carbón leña, cocina, paneles, dólares, poder, compra, ingreso, sicológica, sexual.
+
+ContactPoint: Lic. José de Jesús Esquivel de la Rosa, 01800 111 4634
+
+Temporal: 2010-01-01-2014-12-31
+
+Spatial: Estados Unidos Mexicanos
+
+AccrualPeriodicity: Anual
+
+Distribution:
+
