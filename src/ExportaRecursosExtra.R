@@ -26,15 +26,29 @@ remove(DesGeo)
 
 #MetaData General 
 names(ODS) <- gsub("\\.","_",names(ODS))
+names(ODS) <- gsub("ó","o",names(ODS))
+names(ODS) <- gsub("á","a",names(ODS))
 names(ODS)[1] <- "Nombre_del_objetivo"
-names(ODS$X_1)<-NULL
-write.csv(ODS,"data-out/metadata.csv",row.names = FALSE)
-remove(ODS,Estatal)
-
-#MetaData Espeficia
+ODS$X_1 <-NULL
+ODS <- ODS[1:108,]
+ODS <- ODS[ODS$Clave!="i176",]
+ODS <- ODS[ODS$Clave!="i127",]
+ODS <- ODS[ODS$Clave!="i92",]
+ODS <- ODS[ODS$Clave!="i91",]
+ODS <- ODS[ODS$Clave!="i175",]
+ODS <- ODS[ODS$Clave!="i172",]
+#MetaData Especifica
+remove(Missing,Prueba,TMP,TMP2,i)
+source("src/MetadatosExtra.R")
+Metadatos$Dup<-NULL
+Metadatos$Nombre_del_indicador <- gsub("Diputadas","Porcentaje de curules en la Cámara de Diputados ocupadas por mujeres",Metadatos$Nombre_del_indicador)
+Metadatos$Nombre_del_indicador <- gsub("Senadoras","Porcentaje de curules en la Cámara de Senadores ocupadas por mujeres",Metadatos$Nombre_del_indicador)
+Metadatos$Nombre_del_indicador <- gsub("Agua entubada en el ambito de la vivienda","Agua entubada en el ámbito de la vivienda",Metadatos$Nombre_del_indicador)
+Metadatos$Nombre_del_indicador[43] <- "Residuos sólidos urbanos manejados adecuadamente"
+Metadatos$Nombre_del_indicador[44] <- "Accesibilidad al Espacio Público Abierto"
+write.csv(Metadatos,"data-out/metadata.csv",row.names = FALSE)
 
 #Clear
 remove(list=ls())
 
-RRT1 <- RRT %>% spread(DesGeo,id)
 
