@@ -1868,23 +1868,27 @@ Estatal <- rbind(Estatal,TMP)
 EstatalMeta <- rbind(EstatalMeta,TMP2)
 unlink("tmp/",recursive = TRUE)
 
-#Clean I143
-dir.create("tmp")
-i=which(ODS$Clave=="i143")
-download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
-unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
-TMP <- read.csv("tmp/5_2_violencia_mujeres_indigena_agresor distinto.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
-TMP$id <- ODS$Clave[i]
-TMP$m <- 0
-TMP$id2 <- "a"
-TMP <- TMP[,c(10,2,1,7,11,12)]
-names(TMP) <- c("id","cve","t","valor","m","id2")
-TMP <- TMP[is.na(TMP$t)==FALSE,]
-TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
-names(TMP2) <- c("id","ranget","rangetm")
-Estatal <- rbind(Estatal,TMP)
-EstatalMeta <- rbind(EstatalMeta,TMP2)
-unlink("tmp/",recursive = TRUE)
+# #Clean I143
+# dir.create("tmp")
+# i=which(ODS$Clave=="i143")
+# download.file(ODS$URL.indicador[i],destfile = "tmp/tmp.zip")
+# unzip(zipfile = "tmp/tmp.zip",exdir = "tmp")
+# TMP <- read.csv("tmp/5_2_violencia_mujeres_indigena_agresor distinto.csv",fileEncoding="ISO-8859-3",stringsAsFactors=FALSE)
+# TMP$id <- ODS$Clave[i]
+# TMP$m <- 0
+# TMP <- TMP[is.na(TMP$Clave.de.la.entidad)==FALSE,]
+# TMP$id3 <- paste(TMP$Grupos.de.edad," años",sep="")
+# TMP <- left_join(TMP,data.frame(id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))]))
+# KeyI143 <- data.frame(id=unique(TMP$id),id3=unique(TMP$id3),id2=letters[1:length(unique(TMP$id3))])
+# TMP <- TMP[,c(10,2,1,7,11,13)]
+# names(TMP) <- c("id","cve","t","valor","m","id2")
+# TMP <- TMP[is.na(TMP$t)==FALSE,]
+# TMP2 <- data.frame(id=ODS$Clave[i],ranget=unique(TMP[,c(3,5)]))
+# names(TMP2) <- c("id","ranget","rangetm")
+# Estatal <- rbind(Estatal,TMP)
+# EstatalMeta <- rbind(EstatalMeta,TMP2)
+# unlink("tmp/",recursive = TRUE)
+
 
 #Clean I142
 dir.create("tmp")
@@ -2087,12 +2091,21 @@ EstatalMeta <- rbind(EstatalMeta,TMP2)
 # names(TMP2) <- c("id","ranget","rangetm")
 # Estatal <- rbind(Estatal,TMP)
 # EstatalMeta <- rbind(EstatalMeta,TMP2)
+unlink("tmp/",recursive = TRUE)
+
+
 
 #Clean DBBase
 remove(TMP,TMP2,i)
 ##########################################################################################################################
 
 #####################################
+# Estatal <- read.csv('https://raw.githubusercontent.com/EduardoClark/ODS/master/data-out/datos.csv',stringsAsFactors = FALSE)
+# Estatal$DesGeo <- NULL
+# EstatalMeta <- read.csv('https://raw.githubusercontent.com/EduardoClark/ODS/master/data-out/rangostemporales.csv',stringsAsFactors = FALSE)
+
 Missing <- anti_join(ODS, data.frame(Clave=unique(Estatal$id)))
 ####################################
+Estatal <- Estatal[Estatal$id!="0",]
+
 
